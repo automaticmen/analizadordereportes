@@ -52,6 +52,7 @@ namespace AnalizadorDeReportes
             else
             {
                 DirectorioDeTrabajo = "NO_VALIDO";
+                throw new AnalizadorException("El directorio no existe");
                 //Daras el berro para que sepan que ese directorio no existe tirando una excepcion o algo asi
             }
         }
@@ -93,6 +94,7 @@ namespace AnalizadorDeReportes
                 else // La lista vacia significa que no hay ficheros con los cuales puedes trabajar.
                 {
                     DirectorioDeTrabajo = "NO_VALIDO";
+                    throw new AnalizadorException("No hay ficheros mdb en este directorio");
                     //Lanzar un mensaje o excepcion diciendo que que no se han encontrado ficheros que cumplan con la extension que se necesita.
                     return false;
                 }
@@ -147,6 +149,11 @@ namespace AnalizadorDeReportes
                     }                    
                 }
             }
+            else
+            {
+                throw new AnalizadorException("El directorio que ha seleccionado no contiene ficheros mdb");
+                //aQUI DAR EL BERRO TIRAR UNA EXCEPCION QUE SE YO :)
+            }
             return true;
         }
         
@@ -196,5 +203,14 @@ namespace AnalizadorDeReportes
         //Miembros Privados de la clase aqui
         List<String> Ficheros = new List<string>();
         string DirectorioDeTrabajo = "NO_VALIDO";
+    }
+}
+
+
+public class AnalizadorException : Exception
+{
+    public AnalizadorException(string message)
+       : base(message)
+    {
     }
 }

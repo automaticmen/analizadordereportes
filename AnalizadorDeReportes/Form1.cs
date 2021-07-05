@@ -54,8 +54,18 @@ namespace AnalizadorDeReportes
             DialogResult resultado = folderBrowserDialog1.ShowDialog();
             if (resultado == DialogResult.OK)
             {
-                Analizador reporte = new Analizador(folderBrowserDialog1.SelectedPath);
-                reporte.Analisis();
+                try
+                {
+                    Analizador reporte = new Analizador(folderBrowserDialog1.SelectedPath);
+                    if (reporte.Analisis())
+                    {
+                        MessageBox.Show("Analisis completado satisfactoriamente", "Analizador de reportes", MessageBoxButtons.OK);
+                    }
+                }
+                catch (AnalizadorException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                }
             }
         }
     }
