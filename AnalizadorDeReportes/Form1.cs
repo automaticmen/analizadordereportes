@@ -12,11 +12,10 @@ namespace AnalizadorDeReportes
 {
     public partial class Form1 : Form
     {
+        string DirectorioDeTrabajo = "";
         public Form1()
         {
             InitializeComponent();
-            Analizador reporte = new Analizador(@"C:\Users\Jorge Aguilera Perez\Desktop\Borrar");
-            reporte.SetDirectorio(@"C:\Users\Jorge Aguilera Perez\Desktop\Borrar");
         }
 
 
@@ -30,9 +29,6 @@ namespace AnalizadorDeReportes
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'currentDBDataSet.RegistroFiltro_Yadian' table. You can move, or remove it, as needed.
-            this.registroFiltro_YadianTableAdapter.Fill(this.currentDBDataSet.RegistroFiltro_Yadian);
-
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
@@ -46,6 +42,21 @@ namespace AnalizadorDeReportes
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = folderBrowserDialog1.ShowDialog();
+            if (resultado == DialogResult.OK)
+            {
+                Analizador reporte = new Analizador(folderBrowserDialog1.SelectedPath);
+                reporte.Analisis();
+            }
         }
     }
 }
