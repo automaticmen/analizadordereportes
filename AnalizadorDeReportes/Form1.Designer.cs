@@ -30,16 +30,40 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button1 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.currentDBDataSet = new AnalizadorDeReportes.CurrentDBDataSet();
             this.registroFiltro_YadianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.registroFiltro_YadianTableAdapter = new AnalizadorDeReportes.CurrentDBDataSetTableAdapters.RegistroFiltro_YadianTableAdapter();
             this.tableAdapterManager = new AnalizadorDeReportes.CurrentDBDataSetTableAdapters.TableAdapterManager();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.currentDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.registroFiltro_YadianBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(91, 226);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(145, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Seleccionar Carpeta";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(4, 12);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(335, 208);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // currentDBDataSet
             // 
@@ -61,30 +85,6 @@
             this.tableAdapterManager.RegistroFiltro_YadianTableAdapter = this.registroFiltro_YadianTableAdapter;
             this.tableAdapterManager.UpdateOrder = AnalizadorDeReportes.CurrentDBDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // folderBrowserDialog1
-            // 
-            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(91, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Seleccionar Carpeta";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 12);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(335, 208);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -92,6 +92,9 @@
             this.ClientSize = new System.Drawing.Size(341, 264);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(357, 303);
+            this.MinimumSize = new System.Drawing.Size(357, 303);
             this.Name = "Form1";
             this.Text = "Analizador de reportes Kronos";
             this.Load += new System.EventHandler(this.Form1_Load);
